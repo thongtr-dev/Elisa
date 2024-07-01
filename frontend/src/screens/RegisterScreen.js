@@ -43,84 +43,79 @@ const RegisterScreen = () => {
         dispatch(setCredentials({ ...res }));
         navigate(redirect);
       } catch (error) {
-        toast.error(error?.data?.message);
+        toast.error(error?.data?.message || error.message);
       }
     }
   };
+
   return (
-    <FormContainer className='container'>
-      <div className='col col-half'>
-        <h1 className='title-h1'>Đăng Ký Ngay</h1>
+    <div className="register-wrapper">
+      <div className="register-container">
+        <div className="register-header">
+          <h1>Đăng Ký Ngay!!</h1>
+        </div>
         <Form onSubmit={submitHandler}>
-          <Form.Group controlId='name' className='my-3'>
-            <Form.Label className='font-bold'>Tên</Form.Label>
+          <Form.Group controlId="name">
+            <Form.Label className="form-label">Nhập Tên</Form.Label>
             <Form.Control
-              className='box'
-              type='text'
-              placeholder='Nhập tên'
+              className="custom-placeholder"
+              type="text"
+              placeholder="Nhập tên"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
 
-          <Form.Group controlId='email' className='my-3'>
-            <Form.Label className='font-bold'>Email</Form.Label>
+          <Form.Group controlId="email">
+            <Form.Label className="form-label">Email</Form.Label>
             <Form.Control
-              className='box'
-              type='email'
-              placeholder='Nhập email'
+              className="custom-placeholder"
+              type="email"
+              placeholder="Nhập email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
 
-          <Form.Group controlId='password' className='my-3'>
-            <Form.Label className='font-bold'>Mật khẩu</Form.Label>
+          <Form.Group controlId="password">
+            <Form.Label className="form-label">Mật khẩu</Form.Label>
             <Form.Control
-              className='box'
-              type='password'
-              placeholder='Nhập mật khẩu'
+              className="custom-placeholder"
+              type="password"
+              placeholder="Nhập mật khẩu"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
-          <Form.Group controlId='confirmPassword' className='my-3'>
-            <Form.Label className='font-bold'>Xác nhận mật khẩu</Form.Label>
+          <Form.Group controlId="confirmPassword">
+            <Form.Label className="form-label">Xác nhận mật khẩu</Form.Label>
             <Form.Control
-              className='box'
-              type='password'
-              placeholder='Nhập lại mật khẩu'
+              className="custom-placeholder"
+              type="password"
+              placeholder="Nhập lại mật khẩu"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </Form.Group>
 
-          <Button
-            type='submit'
-            variant='primary'
-            className='btn-register'
-            disabled={isLoading}
-          >
+          <Button type="submit" variant="primary" className="btn-register" disabled={isLoading}>
             Đăng ký
           </Button>
 
           {isLoading && <Loader />}
-        </Form>
 
-        <Row className='py-3'>
-          <Col>
-            Đã có tài khoản?{" "}
-            <Link to={redirect ? `/?redirect=${redirect}` : "/"}>
-              Đăng nhập
-            </Link>
-          </Col>
-        </Row>
+          <Row className="py-3">
+            <Col className="register-link">
+              Đã có tài khoản? <Link to={redirect ? `/?redirect=${redirect}` : "/"}>Đăng nhập</Link>
+            </Col>
+          </Row>
+        </Form>
       </div>
-      <div className=' col col-half'>
-        <img src={img_regis} alt='Name' class='register-img'></img>
+      <div className="image-container">
+        <img src={img_regis} alt="Register" />
       </div>
-    </FormContainer>
+    </div>
   );
 };
 
