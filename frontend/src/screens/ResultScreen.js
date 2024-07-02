@@ -28,7 +28,7 @@ const ResultScreen = () => {
           <h1 className="result-header">Chúc mừng bạn đã hoàn thành bài thi!</h1>
           <div className="result-details">
             <p>
-              <span className="icon">🏆</span> Tổng số câu hỏi: {data.totalQuestions}
+              <span className="icon">🏆</span> Tổng số câu hỏi:{" 50" /*data.totalQuestions*/}
             </p>
             <p>
               <span className="icon">✅</span> Số câu đúng: {data.rightAnswersCount}

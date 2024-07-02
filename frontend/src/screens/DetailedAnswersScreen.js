@@ -76,7 +76,7 @@ const DetailedAnswersScreen = () => {
   ) : (
     <div className='exam-container'>
       <div className='header'>
-        <h1 className='title'>Sửa chi tiết đề {data.exam._id}</h1>
+        <h1 className='title'>Đáp án chi tiết đề: {data.exam._id}</h1>
       </div>
       <div className='exam-content'>
         <div className='question-section sidebar'>
