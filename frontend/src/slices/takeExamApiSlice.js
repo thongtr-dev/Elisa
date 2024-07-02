@@ -27,8 +27,8 @@ export const takeExamApiSlice = apiSlice.injectEndpoints({
     }),
 
     getMyTakenExams: builder.query({
-      query: (userId) => ({
-        url: `${TAKE_EXAM_URL}/mine/${userId}`,
+      query: () => ({
+        url: `${TAKE_EXAM_URL}/mine`,
       }),
       keepUnusedDataFor: 5,
     }),

@@ -113,13 +113,16 @@ const getExamScore = asyncHandler(async (req, res) => {
 
 const getMyTakenExams = asyncHandler(async (req, res) => {
 
-    const taken = await TakeExamExam.find({ userId: req.user._id });
+    const taken = await TakeExam.find({userId: req.user._id});
   
-  const {_id: submitDate, score, rightAnswersCount, wrongAnswersCount } = taken;
+  const {_id: userId, takenId, submitDate, userAnswers, score, rightAnswersCount, wrongAnswersCount } = taken;
 
   if (taken) {
     res.json({
+      userId,
+      takenId,
       submitDate,
+      userAnswers,
       score,
       rightAnswersCount,
       wrongAnswersCount,
