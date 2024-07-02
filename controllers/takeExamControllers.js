@@ -107,7 +107,7 @@ const getExamScore = asyncHandler(async (req, res) => {
 
 /**
  * @desc Get my taken
- * @route GET /api/taken/mine/:id
+ * @route GET /api/taken/mine
  * @access Private
  */
 
@@ -115,14 +115,12 @@ const getMyTakenExams = asyncHandler(async (req, res) => {
 
     const taken = await TakeExam.find({userId: req.user._id});
   
-  const {_id: userId, takenId, submitDate, userAnswers, score, rightAnswersCount, wrongAnswersCount } = taken;
+  const {examId,submitDate, score, rightAnswersCount, wrongAnswersCount } = taken;
 
   if (taken) {
     res.json({
-      userId,
-      takenId,
+      examId,
       submitDate,
-      userAnswers,
       score,
       rightAnswersCount,
       wrongAnswersCount,
