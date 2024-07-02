@@ -13,10 +13,8 @@ const HomeScreen = () => {
     e.preventDefault();
     try {
       const { examId } = await createExam().unwrap();
-      if (examId) {
-        navigate(`/take-exam/${examId}`);
-        toast.success("Exam created successfully");
-      }
+      navigate(`/take-exam/${examId}`);
+      toast.success("Exam created successfully");
     } catch (error) {
       toast.error(error?.data?.message);
     }
