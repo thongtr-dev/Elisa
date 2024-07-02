@@ -106,6 +106,31 @@ const getExamScore = asyncHandler(async (req, res) => {
 });
 
 /**
+ * @desc Get my taken
+ * @route GET /api/taken/mine/:id
+ * @access Private
+ */
+
+const getMyTakenExams = asyncHandler(async (req, res) => {
+
+    const taken = await TakeExamExam.find({ userId: req.user._id });
+  
+  const {_id: submitDate, score, rightAnswersCount, wrongAnswersCount } = taken;
+
+  if (taken) {
+    res.json({
+      submitDate,
+      score,
+      rightAnswersCount,
+      wrongAnswersCount,
+    });
+  } else {
+    res.status(404);
+    throw new Error("Resource not found");
+  }
+});
+
+/**
  * @desc Get exam detailed answers
  * @route GET /api/taken/:id/details
  * @access Private
@@ -131,4 +156,4 @@ const getExamDetailedAnswers = asyncHandler(async (req, res) => {
   }
 });
 
-export { submitExam, getExamScore, getExamDetailedAnswers };
+export { submitExam, getExamScore, getExamDetailedAnswers, getMyTakenExams};
