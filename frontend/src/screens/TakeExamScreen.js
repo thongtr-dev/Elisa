@@ -5,7 +5,7 @@ import { Form } from "react-bootstrap";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import CountdownTimer from "../components/CountDownTimer";
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 import { useGetExamDetailsQuery } from "../slices/examsApiSlice";
 import { useSubmitExamMutation } from "../slices/takeExamApiSlice";
 import "./styles/takeExamScreen.css";
@@ -57,6 +57,8 @@ const TakeExamScreen = () => {
       toast.error(error?.data?.message);
     }
   };
+
+ 
 
   return isLoading ? (
     <Loader />
