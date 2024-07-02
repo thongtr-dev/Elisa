@@ -39,7 +39,7 @@ const Header = () => {
         <Container>
           <NavbarBrand as={Link} to='/'>
             ElisAI
-          </NavbarBrand>
+          </NavbarBrand>S
           <NavbarToggle aria-controls='basic-navbar-nav' />
           <NavbarCollapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
@@ -49,7 +49,7 @@ const Header = () => {
                     Trang cá nhân
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/result/mine'>
-                    Lịch sửa làm đề
+                    Lịch sử làm đề
                   </NavDropdown.Item>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Đăng xuất
