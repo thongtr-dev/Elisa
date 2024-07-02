@@ -13,13 +13,18 @@ const createExam = asyncHandler(async (req, res) => {
     parts: {},
   };
 
-  result.response.forEach((partResponse, index) => {
-    const partNumber = `part${index + 1}`;
-    const partContent = JSON.parse(
-      partResponse.candidates[0].content.parts[0].text
-    );
-    examData.parts[partNumber] = partContent;
-  });
+  try {
+    result.response.forEach((partResponse, index) => {
+      const partNumber = `part${index + 1}`;
+      const partContent = JSON.parse(
+        partResponse.candidates[0].content.parts[0].text
+      );
+      examData.parts[partNumber] = partContent;
+    });
+  } catch (error) {
+    res.status(500);
+    throw new Error("Error parsing exam content: " + error.message);
+  }
 
   const exam = await Exam.create(examData);
   if (exam) {
@@ -27,8 +32,8 @@ const createExam = asyncHandler(async (req, res) => {
       examId: exam._id,
     });
   } else {
-    res.status(500);
-    throw new Error("Internal Server Error: Could not create exam");
+    res.status(400);
+    throw new Error("Invalid exam data. Please try again");
   }
 });
 
