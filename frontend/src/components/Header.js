@@ -37,7 +37,16 @@ const Header = () => {
     <header>
       <Navbar bg='dark' variant='dark' expand='md' collapseOnSelect>
         <Container>
-          <NavbarBrand as={Link} to='/'>
+          <NavbarBrand
+            as={Link}
+            to='/'
+            style={{
+              color: '#ff69b4',
+              fontSize: '1.25rem',
+              fontFamily: 'Poppins, sans-serif',
+              fontWeight: '700',
+            }}
+          >
             ElisAI
           </NavbarBrand>
           <NavbarToggle aria-controls='basic-navbar-nav' />
@@ -49,7 +58,7 @@ const Header = () => {
                     Trang cá nhân
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/result/mine'>
-                    Lịch sửa làm đề
+                    Lịch sử làm đề thi
                   </NavDropdown.Item>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Đăng xuất
