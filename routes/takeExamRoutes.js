@@ -14,6 +14,6 @@ const router = express.Router();
 router.route("/").post(protect, submitExam);
 router.route("/:id").get(protect, getExamScore);
 router.route("/:id/details").get(protect, getExamDetailedAnswers);
-router.route("/mine/:id").get(protect, getMyTakenExams);
+router.route("/mine").get(protect, getMyTakenExams);
 
 export default router;
