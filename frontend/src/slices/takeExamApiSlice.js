@@ -25,11 +25,21 @@ export const takeExamApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
+
+    getMyTakenExams: builder.query({
+      query: (userId) => ({
+        url: `${TAKE_EXAM_URL}/mine/${userId}`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
   }),
 });
+
+
 
 export const {
   useSubmitExamMutation,
   useGetExamScoreQuery,
   useGetExamDetailedAnswersQuery,
+  useGetMyTakenExamsQuery,
 } = takeExamApiSlice;
