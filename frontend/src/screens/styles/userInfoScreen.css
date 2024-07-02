@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.list-item {
+    margin-bottom: 20px; /* Space between rows */
+}
+
+.column {
+    margin-right: 100px; /* Space between columns */
+    display: inline-block;
+}

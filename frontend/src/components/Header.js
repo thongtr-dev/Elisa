@@ -48,6 +48,9 @@ const Header = () => {
                   <NavDropdown.Item as={Link} to='/profile'>
                     Trang cá nhân
                   </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to='/result/mine'>
+                    Lịch sửa làm đề
+                  </NavDropdown.Item>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Đăng xuất
                   </NavDropdown.Item>
