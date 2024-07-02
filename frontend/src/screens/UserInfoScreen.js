@@ -1,10 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetMyTakenExamsQuery } from "../slices/takeExamApiSlice";
 import { Button } from "react-bootstrap";
-import { toast } from "react-toastify";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { format } from 'date-fns';
 import "./styles/userInfoScreen.css"
 
 const UserInfoScreen = () => {
