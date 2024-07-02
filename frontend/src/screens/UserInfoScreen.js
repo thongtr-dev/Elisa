@@ -40,7 +40,7 @@ const UserInfoScreen = () => {
             <div className="list-container">
                 <ul>
                     <li className="list-item">
-                        <span className="column">Đề</span>
+                        <span className="column">Đề thi</span>
                         <span className="column">Ngày</span>
                         <span className="column">Điểm</span>
                         <span className="column">Đúng</span>
@@ -50,7 +50,7 @@ const UserInfoScreen = () => {
                         <li key={record.examId} className="list-item">
                             <span className="column1">{i + 1}</span>
                             <span className="column1">{formatDateTime(record.submitDate)}</span>
-                            <span className="column1">{record.score.toFixed(2)}</span>
+                            <span className="column1">{record.score.toFixed(1)}</span>
                             <span className="column1">{record.rightAnswersCount}</span>
                             <span className="column1">{record.wrongAnswersCount}</span>
                             <span className="column1"><Button className="custom-button" onClick={reTakeHandler.bind(null, record.examId)}>Làm lại</Button></span>
