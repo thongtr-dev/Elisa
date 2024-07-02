@@ -49,71 +49,79 @@ const RegisterScreen = () => {
   };
 
   return (
-    <div className="register-wrapper">
-      <div className="register-container">
-        <div className="register-header">
+    <div className='register-wrapper'>
+      <div className='register-container'>
+        <div className='register-header'>
           <h1>Đăng Ký Ngay!!</h1>
         </div>
         <Form onSubmit={submitHandler}>
-          <Form.Group controlId="name">
-            <Form.Label className="form-label">Nhập Tên</Form.Label>
+          <Form.Group controlId='name'>
+            <Form.Label className='form-label'>Nhập Tên</Form.Label>
             <Form.Control
-              className="custom-placeholder"
-              type="text"
-              placeholder="Nhập tên"
+              className='custom-placeholder'
+              type='text'
+              placeholder='Nhập tên'
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
 
-          <Form.Group controlId="email">
-            <Form.Label className="form-label">Email</Form.Label>
+          <Form.Group controlId='email'>
+            <Form.Label className='form-label'>Email</Form.Label>
             <Form.Control
-              className="custom-placeholder"
-              type="email"
-              placeholder="Nhập email"
+              className='custom-placeholder'
+              type='email'
+              placeholder='Nhập email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
 
-          <Form.Group controlId="password">
-            <Form.Label className="form-label">Mật khẩu</Form.Label>
+          <Form.Group controlId='password'>
+            <Form.Label className='form-label'>Mật khẩu</Form.Label>
             <Form.Control
-              className="custom-placeholder"
-              type="password"
-              placeholder="Nhập mật khẩu"
+              className='custom-placeholder'
+              type='password'
+              placeholder='Nhập mật khẩu'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
-          <Form.Group controlId="confirmPassword">
-            <Form.Label className="form-label">Xác nhận mật khẩu</Form.Label>
+          <Form.Group controlId='confirmPassword'>
+            <Form.Label className='form-label'>Xác nhận mật khẩu</Form.Label>
             <Form.Control
-              className="custom-placeholder"
-              type="password"
-              placeholder="Nhập lại mật khẩu"
+              className='custom-placeholder'
+              type='password'
+              placeholder='Nhập lại mật khẩu'
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </Form.Group>
 
-          <Button type="submit" variant="primary" className="btn-register" disabled={isLoading}>
+          <Button
+            type='submit'
+            variant='primary'
+            className='btn-register'
+            disabled={isLoading}
+          >
             Đăng ký
           </Button>
 
           {isLoading && <Loader />}
 
-          <Row className="py-3">
-            <Col className="register-link">
-              Đã có tài khoản? <Link to={redirect ? `/?redirect=${redirect}` : "/"}>Đăng nhập</Link>
+          <Row className='py-3'>
+            <Col className='register-link'>
+              Đã có tài khoản?{" "}
+              <Link to={redirect ? `/?redirect=${redirect}` : "/"}>
+                Đăng nhập
+              </Link>
             </Col>
           </Row>
         </Form>
       </div>
-      <div className="image-container">
-        <img src={img_regis} alt="Register" />
+      <div className='image-container'>
+        <img src={img_regis} alt='Register' />
       </div>
     </div>
   );
