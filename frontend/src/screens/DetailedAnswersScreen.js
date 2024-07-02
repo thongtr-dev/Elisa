@@ -115,7 +115,7 @@ const DetailedAnswersScreen = () => {
                   </Button>
                 ) : (
                   <Button
-                    variant='danger'
+                    variant='secondary'
                     onClick={() =>
                       showModalHandler(correctAnswers[num]?.answerDetail)
                     }
