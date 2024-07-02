@@ -23,7 +23,7 @@ const ResultScreen = () => {
   ) : (
     <div className="result-wrapper">
       <div className="result-container">
-        <img src="/pulic/trophy.png" alt="trophy" className="result-image" />
+        <img src="/trophy.png" alt="trophy" className="result-image" />
         <div className="result-content">
           <h1 className="result-header">Chúc mừng bạn đã hoàn thành bài thi!</h1>
           <div className="result-details">
@@ -42,7 +42,7 @@ const ResultScreen = () => {
           </button>
         </div>
         <div className="balloon-container">
-          <img src="/public/balloon.png" alt="Balloon" className="balloon" />
+          <img src="/balloon.png" alt="Balloon" className="balloon" />
         </div>
       </div>
     </div>

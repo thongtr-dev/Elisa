@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   background-color: #f8f9fa;
   border-bottom: 1px solid #dee2e6;
   border-radius: 10px;
@@ -32,18 +32,19 @@
 }
 
 .logout-btn {
-  padding: 10px 20px;
+  padding: 8px 20px;
   background-color: #6c75d7;
   border: none;
-  color: white;
+  color: rgb(71, 16, 16);
   cursor: pointer;
 }
 
 .exam-content {
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 2000px;
   margin: 20px;
+ 
 }
 
 .question-section {
@@ -90,7 +91,7 @@
 }
 
 .submit-btn {
-  padding: 10px 20px;
+  padding: 8px 20px;
   margin-bottom: 20px;
   background-color: #ff6b6b;
   border: none;
@@ -107,7 +108,7 @@
 .question-item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   padding: 10px;
   background-color: #f8f9fa;
   border: 1px solid #dee2e6;
