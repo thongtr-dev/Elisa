@@ -1,33 +1,108 @@
-.container {
-  background-color: transparent;
-  width: 100%;
-  padding: 0 20px;
+body {
+  background-color: #f9f5f7;
+  font-family: "Arial", sans-serif;
 }
-.col {
-  float: left;
+/* Set Padding */
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 9rem;
+  margin-top: -100px;
 }
-.col-half {
-  width: 50%;
+/* Set Padding */
+.register-container {
+  flex: 1;
+  max-width: 800px;
+  padding: 2.5rem;
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 2rem;
 }
-.title-h1 {
-  font-size: 34px;
+
+.logo {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #ff66a5;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.register-header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+/* "Đăng ký ngay" */
+.register-header h1 {
+  font-size: 2.5rem;
   font-weight: bold;
-  padding: 10px 0;
+  color: #000;
+  margin-bottom: 0.5rem;
 }
-.font-bold {
-  font-weight: bold;
+
+.register-header p {
+  color: #666;
 }
-.box {
-  background-color: #ffffff;
+
+.form-label {
+  color: #333;
+  font-weight: bold; /* In đậm chữ */
 }
+
+.form-control {
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+/* Nhập thông tin */
+.custom-placeholder::placeholder {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
 .btn-register {
-  background-color: #ff8caa;
+  background-color: #ff66a5;
+  border-color: #ff66a5;
+  color: #fff;
+  border-radius: 5px;
   width: 100%;
-  margin-top: 10px;
-  border: none;
+  padding: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-top: 1rem;
 }
-.register-img {
-  width: 120%;
-  padding-left: 50px;
-  margin-top: 120px;
+
+.btn-register:hover {
+  background-color: #ff3380;
+  border-color: #ff3380;
+}
+
+.register-link {
+  display: block;
+  text-align: center;
+  margin-top: -0.1rem;
+}
+/* "Đăng nhập" */
+.register-link a {
+  color: #0000ff;
+  text-decoration: underline;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.image-container {
+  flex: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.image-container img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
 }

@@ -10,9 +10,10 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   background-color: #f8f9fa;
   border-bottom: 1px solid #dee2e6;
+  border-radius: 10px;
 }
 
 .title {
@@ -31,26 +32,26 @@
 }
 
 .logout-btn {
-  padding: 10px 20px;
+  padding: 8px 20px;
   background-color: #6c75d7;
   border: none;
-  color: white;
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
 
 .exam-content {
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 2000px;
   margin: 20px;
 }
 
 .question-section {
   flex: 3;
-  padding: 20px;
+  padding: 40px;
   background-color: #fff;
   border: 1px solid #dee2e6;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .question-section h3 {
@@ -78,6 +79,7 @@
 .timer {
   font-size: 18px;
   margin-bottom: 20px;
+  margin-left: -100px;
 }
 
 .time {
@@ -87,7 +89,7 @@
 }
 
 .submit-btn {
-  padding: 10px 20px;
+  padding: 8px 20px;
   margin-bottom: 20px;
   background-color: #ff6b6b;
   border: none;
@@ -100,14 +102,14 @@
   flex-direction: column;
   width: 100%;
 }
-
+/*ĐÁP ÁN*/
 .question-item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   padding: 10px;
   background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
+  border: 1px solid #254668;
   border-radius: 8px;
 }
 

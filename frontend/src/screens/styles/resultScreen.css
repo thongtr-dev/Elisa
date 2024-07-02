@@ -1,0 +1,82 @@
+body {
+  background-color: #f9f5f7;
+  font-family: "Arial", sans-serif;
+}
+
+.result-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #f9f5f7;
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+  align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 5rem;
+  max-width: 1800px; /* Đặt giới hạn chiều rộng */
+  margin-bottom: 8rem;
+}
+
+.icon {
+  margin-top: 2rem;
+}
+
+.result-header {
+  font-size: 2.4rem;
+  color: #6b21a8;
+  font-weight: bold;
+  margin-bottom: 10rem;
+}
+
+.result-details {
+  text-align: left;
+  margin-top: -8rem;
+  font-size: 1.2rem;
+}
+
+.result-details p {
+  margin: 0.5rem 0;
+}
+
+.result-details .icon {
+  margin-right: 0.5rem;
+}
+
+.result-button {
+  background-color: #ff66a5;
+  border: none;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  font-size: 1.15rem;
+  font-weight: bold;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.result-button:hover {
+  background-color: #ff3380;
+}
+
+.result-image {
+  max-width: 150px;
+  margin-bottom: 1rem; /* Thêm khoảng cách phía dưới hình ảnh */
+}
+
+.balloon-container {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.balloon {
+  width: 100px;
+  height: 100px;
+}
