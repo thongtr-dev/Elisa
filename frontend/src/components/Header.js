@@ -35,16 +35,16 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='md' collapseOnSelect>
+      <Navbar variant='light' expand='md' collapseOnSelect>
         <Container>
           <NavbarBrand
             as={Link}
             to='/'
             style={{
-              color: '#ff69b4',
-              fontSize: '1.25rem',
-              fontFamily: 'Poppins, sans-serif',
-              fontWeight: '700',
+              color: "#ff6b6b",
+              fontSize: "48px",
+              fontFamily: "Poppins, sans-serif",
+              fontWeight: "700",
             }}
           >
             ElisAI

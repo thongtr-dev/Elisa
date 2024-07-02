@@ -1,0 +1,84 @@
+/* Reset default list style */
+ul {
+  list-style: none;
+  padding: 0;
+  max-height: 500px; /* Set the maximum height for the list */
+  overflow-y: auto; /* Add vertical scrollbar */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #888 #f7f7f7; /* Firefox */
+}
+
+/* Container for the list */
+.list-container {
+  background-color: #ffffff; /* Background color for the list */
+  padding: 20px; /* Padding inside the container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+  margin: 20px 0; /* Margin outside the container */
+}
+
+/* Styling for each list item */
+.list-item {
+  margin-bottom: 20px; /* Space between rows */
+  display: grid; /* Use grid layout */
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr; /* Define columns */
+  align-items: center; /* Align items vertically */
+}
+
+/* Styling for each column within a list item */
+.column {
+  text-align: center; /* Center align text */
+  font-weight: bold;
+}
+
+.column1 {
+  text-align: center; /* Center align text */
+  /*font-weight: bold;*/
+}
+/* Container for the header */
+.header-container {
+  background-color: #f7f7f7; /* Background color for the header */
+  padding: 20px; /* Padding inside the container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+  margin: 20px 0; /* Margin outside the container */
+  text-align: center; /* Center the text */
+}
+
+/* Header text styling */
+.header-text {
+  font-size: 2em; /* Larger font size for the header */
+  font-weight: bold; /* Bold text */
+}
+
+/* Custom scrollbar styles */
+ul::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+ul::-webkit-scrollbar-track {
+  background: #f7f7f7; /* Background of the track */
+  border-radius: 8px; /* Rounded corners for the track */
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 8px; /* Rounded corners for the thumb */
+  border: 3px solid #f7f7f7; /* Padding around the thumb */
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+/* Custom button styles */
+.custom-button {
+  background-color: #535dd0; /* Pink background color */
+  border-color: #535dd0; /* Pink border color */
+  color: white; /* White text color */
+}
+
+.custom-button.retake {
+  background-color: #ff6b6b;
+  border-color: #ff6b6b;
+}

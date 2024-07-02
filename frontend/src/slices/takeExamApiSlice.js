@@ -35,8 +35,6 @@ export const takeExamApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-
-
 export const {
   useSubmitExamMutation,
   useGetExamScoreQuery,

@@ -14,7 +14,6 @@ const CountdownTimer = () => {
 
   // Format time into hours, minutes, and seconds
   const formatTime = (time) => {
-    const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
     return `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
@@ -22,8 +21,8 @@ const CountdownTimer = () => {
 
   return (
     <div>
-      <text>{formatTime(timeLeft)}</text>
-      {timeLeft <= 0 && <h2>Time's up!</h2>}
+      <p>{formatTime(timeLeft)}</p>
+      {timeLeft <= 0 && <h2>Hết giờ làm bài!</h2>}
     </div>
   );
 };

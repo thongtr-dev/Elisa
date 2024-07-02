@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import CountdownTimer from "../components/CountDownTimer";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useGetExamDetailsQuery } from "../slices/examsApiSlice";
 import { useSubmitExamMutation } from "../slices/takeExamApiSlice";
 import "./styles/takeExamScreen.css";
@@ -58,8 +59,6 @@ const TakeExamScreen = () => {
     }
   };
 
- 
-
   return isLoading ? (
     <Loader />
   ) : error ? (
@@ -67,13 +66,15 @@ const TakeExamScreen = () => {
       {error?.status} {JSON.stringify(error?.data)}
     </Message>
   ) : !examData ? (
-    <Message variant='danger'>Exam not found.</Message>
+    <Message variant='danger'>Không tìm thấy bài kiểm tra...</Message>
   ) : (
     <div className='exam-container'>
       <div className='header'>
         <h1 className='title'>Đề bài</h1>
         <div className='user-info'>
-          <Button className='logout-btn'>THOÁT</Button>
+          <Button as={Link} className='logout-btn' to='/main'>
+            THOÁT
+          </Button>
         </div>
       </div>
       <div className='exam-content'>

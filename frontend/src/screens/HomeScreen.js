@@ -37,7 +37,11 @@ const HomeScreen = () => {
           {isLoading ? (
             <Loader />
           ) : (
-            <Button className='btn-start' onClick={submitHandler}>
+            <Button
+              className='btn-start'
+              onClick={submitHandler}
+              style={{ backgroundColor: "#ff6b6b", borderColor: "#ff6b6b" }}
+            >
               Làm bài ngay
             </Button>
           )}

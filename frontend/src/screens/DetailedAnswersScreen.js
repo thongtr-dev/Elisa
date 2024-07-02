@@ -14,7 +14,7 @@ const DetailedAnswersScreen = () => {
   const [modalContent, setModalContent] = useState("");
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && data) {
       const { parts } = data.exam;
 
       const temp = [];
@@ -36,7 +36,7 @@ const DetailedAnswersScreen = () => {
 
       setCorrectAnswers(updatedCorrectAnswers);
     }
-  }, [isLoading]);
+  }, [isLoading, data]);
 
   const renderQuestions = (questions) =>
     questions.map((question) => (
