@@ -87,6 +87,10 @@ const TakeExamScreen = () => {
               {examData.parts[partKey].passage && (
                 <p>{examData.parts[partKey].passage}</p>
               )}
+              {examData.parts[partKey].passages &&
+                examData.parts[partKey].passages.map((passage) => (
+                  <p>{passage}</p>
+                ))}
               {renderQuestions(examData.parts[partKey].questions)}
             </div>
           ))}
