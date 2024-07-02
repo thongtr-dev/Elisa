@@ -112,19 +112,10 @@ const getExamScore = asyncHandler(async (req, res) => {
  */
 
 const getMyTakenExams = asyncHandler(async (req, res) => {
+  const takenExams = await TakeExam.find({ userId: req.user._id });
 
-    const taken = await TakeExam.find({userId: req.user._id});
-  
-  const {examId,submitDate, score, rightAnswersCount, wrongAnswersCount } = taken;
-
-  if (taken) {
-    res.json({
-      examId,
-      submitDate,
-      score,
-      rightAnswersCount,
-      wrongAnswersCount,
-    });
+  if (takenExams) {
+    res.json(takenExams);
   } else {
     res.status(404);
     throw new Error("Resource not found");
@@ -157,4 +148,4 @@ const getExamDetailedAnswers = asyncHandler(async (req, res) => {
   }
 });
 
-export { submitExam, getExamScore, getExamDetailedAnswers, getMyTakenExams};
+export { submitExam, getExamScore, getExamDetailedAnswers, getMyTakenExams };
