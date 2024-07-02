@@ -1,4 +1,3 @@
-
 const examSchemaConfig = `{
   "description": "Vietnam National High School Graduation Examination - English",
   "type": "object",
@@ -11,7 +10,7 @@ const examSchemaConfig = `{
           "properties": {
             "questionType": {
               "type": "string",
-              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the word whose underlined part differs from the other three in pronunciation in each of the following questions. "
+              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the word whose underlined part differs from the other three in pronunciation in each of the following questions."
             },
             "numberOfQuestions": {
               "type": "integer",
@@ -41,7 +40,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -94,7 +93,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -147,7 +146,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -170,7 +169,7 @@ const examSchemaConfig = `{
           "properties": {
             "questionType": {
               "type": "string",
-              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the word(s) OPPOSITE in meaning to the underlined word(s) in each of the following questions. "
+              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the word(s) OPPOSITE in meaning to the underlined word(s) in each of the following questions."
             },
             "numberOfQuestions": {
               "type": "integer",
@@ -200,7 +199,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -223,7 +222,7 @@ const examSchemaConfig = `{
           "properties": {
             "questionType": {
               "type": "string",
-              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the word CLOSEST in meaning to the underlined word in each of the following questions"
+              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the word CLOSEST in meaning to the underlined word in each of the following questions."
             },
             "numberOfQuestions": {
               "type": "integer",
@@ -253,7 +252,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -306,7 +305,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -329,7 +328,7 @@ const examSchemaConfig = `{
           "properties": {
             "questionType": {
               "type": "string",
-              "description": "Read the following passage and mark the letter A, B, C, or D on your answer sheet to indicate the correct word or phrase that best fits each of the numbered blanks from 26 to 30. ."
+              "description": "Read the following passage and mark the letter A, B, C, or D on your answer sheet to indicate the correct word or phrase that best fits each of the numbered blanks from 26 to 30."
             },
             "numberOfQuestions": {
               "type": "integer",
@@ -341,7 +340,7 @@ const examSchemaConfig = `{
             },
             "questions": {
               "type": "array",
-              "description": "List of 5 blanks/questions.",
+              "description": "List of blanks/questions.",
               "items": {
                 "type": "object",
                 "properties": {
@@ -363,7 +362,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -387,7 +386,7 @@ const examSchemaConfig = `{
           "properties": {
             "questionType": {
               "type": "string",
-              "description": "Read the following passage and mark the letter A, B, C, or D on your answer sheet to indicate the correct answer to each of the questions from 31 to 35. "
+              "description": "Read the following passage and mark the letter A, B, C, or D on your answer sheet to indicate the correct answer to each of the questions from 31 to 35."
             },
             "numberOfQuestions": {
               "type": "integer",
@@ -421,7 +420,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -481,7 +480,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -535,7 +534,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -558,7 +557,7 @@ const examSchemaConfig = `{
           "properties": {
             "questionType": {
               "type": "string",
-              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the underlined part that needs correction in each of the following questions. "
+              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the underlined part that needs correction in each of the following questions."
             },
             "numberOfQuestions": {
               "type": "integer",
@@ -572,7 +571,7 @@ const examSchemaConfig = `{
                 "properties": {
                   "question": {
                     "type": "string",
-                    "description": "The sentence containing opening and closing HTML <strong> and <u> tags to indicate four underlined parts, one needs correction."
+                    "description": "The sentence must contain exactly four pairs of HTML <strong> and <u> tags to clearly indicate the specific parts that need to be underlined for correction."
                   },
                   "options": {
                     "type": "array",
@@ -588,7 +587,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
@@ -611,7 +610,7 @@ const examSchemaConfig = `{
           "properties": {
             "questionType": {
               "type": "string",
-              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the sentence that best combines each pair of sentences in the following questions. "
+              "description": "Mark the letter A, B, C, or D on your answer sheet to indicate the sentence that best combines each pair of sentences in the following questions."
             },
             "numberOfQuestions": {
               "type": "integer",
@@ -641,7 +640,7 @@ const examSchemaConfig = `{
                   },
                   "answerDetail": {
                     "type": "string",
-                    "description": "Details or explanation for the answer."
+                    "description": "Details or explanation for the answer, in Vietnamese."
                   }
                 },
                 "required": [
