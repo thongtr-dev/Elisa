@@ -4,7 +4,7 @@ import {
   submitExam,
   getExamScore,
   getExamDetailedAnswers,
-  getMyTakenExams,
+  getMyTakenExams
 } from "../controllers/takeExamControllers.js";
 
 import { protect } from "../middleware/authMiddleware.js";
