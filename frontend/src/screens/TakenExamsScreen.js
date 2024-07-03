@@ -36,7 +36,7 @@ const TakenExamsScreen = () => {
       <div className='list-container'>
         <ul>
           <li className='list-item'>
-            <span className='column'>Đề thi</span>
+            <span className='column'>STT</span>
             <span className='column'>Ngày</span>
             <span className='column'>Điểm</span>
             <span className='column'>Đúng</span>
