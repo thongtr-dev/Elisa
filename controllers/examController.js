@@ -11,19 +11,21 @@ const createExam = asyncHandler(async (req, res) => {
 
   const examData = {
     parts: {},
+    percentage: null,
   };
 
   try {
-    result.response.forEach((partResponse, index) => {
+    result.parts.forEach((part, index) => {
       const partNumber = `part${index + 1}`;
-      const partContent = JSON.parse(
-        partResponse.candidates[0].content.parts[0].text
-      );
+      const partContent = JSON.parse(part.candidates[0].content.parts[0].text);
       examData.parts[partNumber] = partContent;
     });
+    examData.percentage = JSON.parse(
+      result.percentage.candidates[0].content.parts[0].text
+    );
   } catch (error) {
     res.status(500);
-    throw new Error("Error parsing exam content: " + error.message);
+    throw new Error(`Error parsing exam content: ${error.message}`);
   }
 
   const exam = await Exam.create(examData);
