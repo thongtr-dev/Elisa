@@ -8,7 +8,7 @@ import CountdownTimer from "../components/CountDownTimer";
 import { toast } from "react-toastify";
 import { useGetExamDetailsQuery } from "../slices/examsApiSlice";
 import { useSubmitExamMutation } from "../slices/takeExamApiSlice";
-import { saveTakingExamAnswers } from "../slices/authSlice";
+import { saveTakingExam } from "../slices/authSlice";
 import "./styles/takeExamScreen.css";
 
 const TakeExamScreen = () => {
@@ -25,10 +25,23 @@ const TakeExamScreen = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (userInfo?.userAnswers) {
-      setUserAnswers(userInfo.userAnswers);
+    if (
+      !userInfo?.takingExam?.examId ||
+      userInfo?.takingExam?.examId !== examId
+    ) {
+      dispatch(
+        saveTakingExam({
+          ...userInfo,
+          takingExam: { examId, userAnswers: [], timeLeft: 3600 },
+        })
+      );
+    } else if (userInfo?.takingExam?.examId === examId) {
+      const savedUserAnswers = userInfo?.takingExam?.userAnswers;
+      if (savedUserAnswers) {
+        setUserAnswers(savedUserAnswers);
+      }
     }
-  }, [userInfo]);
+  }, [dispatch, userInfo, examId]);
 
   let questionNum = 0;
 
@@ -54,7 +67,10 @@ const TakeExamScreen = () => {
     setUserAnswers(updatedAnswers);
 
     dispatch(
-      saveTakingExamAnswers({ ...userInfo, userAnswers: updatedAnswers })
+      saveTakingExam({
+        ...userInfo,
+        takingExam: { ...userInfo?.takingExam, userAnswers: updatedAnswers },
+      })
     );
   };
 
@@ -67,7 +83,7 @@ const TakeExamScreen = () => {
         userAnswers,
       }).unwrap();
       toast.success("Đã nộp bài thành công!");
-      dispatch(saveTakingExamAnswers({ userAnswers: [] }));
+      dispatch(saveTakingExam({ ...userInfo, takingExam: {} }));
       navigate(`/result/${takenId}`);
     } catch (error) {
       toast.error(error?.data?.message);

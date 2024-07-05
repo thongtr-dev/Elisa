@@ -36,15 +36,22 @@ const TakenExamsScreen = () => {
       <div className='list-container'>
         <ul>
           <li className='list-item'>
-            <span className='column'>STT</span>
+            <span className='column'>Mã đề</span>
             <span className='column'>Ngày</span>
             <span className='column'>Điểm</span>
             <span className='column'>Đúng</span>
             <span className='column'>Sai</span>
           </li>
-          {data.map((record, i) => (
+          {data.map((record) => (
             <li key={record.examId} className='list-item'>
-              <span className='column1'>{i + 1}</span>
+              <span
+                className='column1'
+                style={{
+                  maxWidth: "150px",
+                }}
+              >
+                {record.examId}
+              </span>
               <span className='column1'>
                 {formatDateTime(record.submitDate)}
               </span>

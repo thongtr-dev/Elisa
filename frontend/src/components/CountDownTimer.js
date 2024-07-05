@@ -1,38 +1,44 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveTakingExamTimeLeft } from "../slices/authSlice";
+import { saveTakingExam } from "../slices/authSlice";
 
 const CountdownTimer = ({ submitHandler }) => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
 
-  const initialTime = userInfo?.timeLeft ?? 60 * 60;
+  const initialTime = userInfo?.taking?.timeLeft ?? 3600;
   const [timeLeft, setTimeLeft] = useState(initialTime);
 
   useEffect(() => {
-    if (userInfo && userInfo.timeLeft) {
-      setTimeLeft(userInfo.timeLeft);
-    }
+    setTimeLeft(userInfo?.takingExam?.timeLeft ?? 3600);
   }, [userInfo]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prevTimeLeft) => {
-        const newTimeLeft = Math.max(prevTimeLeft - 1, 0);
-        dispatch(saveTakingExamTimeLeft({ timeLeft: newTimeLeft }));
+        if (prevTimeLeft <= 0) {
+          clearInterval(timer);
+          return 0;
+        }
+        const newTimeLeft = prevTimeLeft - 1;
+        dispatch(
+          saveTakingExam({
+            ...userInfo,
+            takingExam: { ...userInfo?.takingExam, timeLeft: newTimeLeft },
+          })
+        );
         return newTimeLeft;
       });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [dispatch]);
+  }, [dispatch, userInfo, timeLeft]);
 
   useEffect(() => {
     if (timeLeft === 0) {
-      dispatch(saveTakingExamTimeLeft({ timeLeft: 0 }));
       submitHandler();
     }
-  }, [timeLeft, dispatch, submitHandler]);
+  }, [timeLeft]);
 
   const formatTime = (time) => {
     const minutes = Math.floor((time % 3600) / 60);
