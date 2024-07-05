@@ -39,11 +39,9 @@ const ProgressScreen = () => {
     try {
       const { examId } = await createExam().unwrap();
       navigate(`/take-exam/${examId}`);
-      toast.success("Tạo đề thành công!");
+      toast.success("Tạo đề thi thành công!");
     } catch (error) {
-      setErrMsg(
-        "Đề này lỗi quá nhiều nên giáo viên đã thu hồi. Bạn hãy thử tạo đề mới nhé."
-      );
+      setErrMsg("Đề thi này chưa hoàn chỉnh. Bạn hãy tạo đề thi mới nhé.");
       setIsError(true);
     }
   };
@@ -56,31 +54,61 @@ const ProgressScreen = () => {
   };
 
   return (
-    <Row className='mt-5'>
-      <Col className='text-center'>
-        <h2 className='subtitle'>Bắt đầu phát đề!</h2>
-      </Col>
+    <div className='progress-screen-container'>
+      <Row className='mt-5'>
+        <Col className='text-center'>
+          <h2 className='subtitle'>BẮT ĐẦU TẠO ĐỀ THI! </h2>
+        </Col>
 
-      {isLoading && (
-        <>
-          <ProgressBar animated now={progress} label={`${progress}%`} />
-          <p className='mt-3'>Đang phát đề...</p>
-        </>
-      )}
+        {isLoading && (
+          <>
+            <ProgressBar
+              animated
+              now={progress}
+              label={`${progress}% Complete`}
+              className='custom-progress-bar'
+            />
+            <p className='mt-3'>Đang hiển thị...</p>
+          </>
+        )}
 
-      {isError && (
-        <>
-          <p className='text-danger text-center' style={{ fontSize: "18px" }}>
-            {errMsg}
-          </p>
-          <Col className='text-center'>
-            <Button className='btn-start' onClick={clickHandler}>
-              Tạo lại đề mới
-            </Button>
-          </Col>
-        </>
-      )}
-    </Row>
+        {isError && (
+          <>
+            <p className='text-danger text-center' style={{ fontSize: "18px" }}>
+              {errMsg}
+            </p>
+            <Col className='text-center'>
+              <Button className='btn-start' onClick={clickHandler}>
+                Tạo lại đề thi mới
+              </Button>
+            </Col>
+          </>
+        )}
+      </Row>
+      <Row className='mt-3'>
+        <Col className='text-center'>
+          <img
+            src='/pro2.png'
+            alt='Login Illustration'
+            className='pro2-image'
+          />
+          <style>
+            {`
+              .progress-bar {
+                transition: width 1s ease-in-out;
+              }
+              .custom-progress-bar .progress-bar {
+                background-color: #FF1493 !important; 
+              }
+              .progress-bar span {
+                color: black; 
+                font-weight: bold;
+              }
+            `}
+          </style>
+        </Col>
+      </Row>
+    </div>
   );
 };
 

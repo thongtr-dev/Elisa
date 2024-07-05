@@ -82,12 +82,16 @@ const DetailedAnswersScreen = () => {
             {Object.keys(data.exam.parts).map((partKey) => (
               <div key={partKey}>
                 <p className='questionType'>
-                  {data.exam.parts[partKey].questionType}
+                  {data?.exam?.parts[partKey]?.questionType}
                 </p>
-                {data.exam.parts[partKey].passage && (
-                  <p>{data.exam.parts[partKey].passage}</p>
+                {data?.exam?.parts?.[partKey]?.passage && (
+                  <p>{data?.exam?.parts?.[partKey]?.passage}</p>
                 )}
-                {renderQuestions(data.exam.parts[partKey].questions)}
+                {data?.exam?.parts?.[partKey]?.passages &&
+                  data?.exam?.parts?.[partKey]?.passages.map((passage) => (
+                    <p>{passage}</p>
+                  ))}
+                {renderQuestions(data?.exam?.parts?.[partKey]?.questions)}
               </div>
             ))}
           </div>
@@ -107,7 +111,8 @@ const DetailedAnswersScreen = () => {
                           : "danger"
                       }
                       onClick={() =>
-                        showModalHandler(correctAnswers[num]?.answerDetail)
+                        showModalHandler(`Đáp án đúng là ${options[correctAnswers[num]?.correctOption]}.
+                          ${correctAnswers[num]?.answerDetail}`)
                       }
                     >
                       {options[data.userAnswers?.[num]]}
@@ -116,7 +121,8 @@ const DetailedAnswersScreen = () => {
                     <Button
                       variant='secondary'
                       onClick={() =>
-                        showModalHandler(correctAnswers[num]?.answerDetail)
+                        showModalHandler(`Đáp án đúng là ${options[correctAnswers[num]?.correctOption]}.
+                          ${correctAnswers[num]?.answerDetail}`)
                       }
                     >
                       {options[correctAnswers[num]?.correctOption]}

@@ -101,7 +101,7 @@ const TakeExamScreen = () => {
       <div className='exam-container'>
         <Row className='header align-items-center'>
           <Col md={8}>
-            <h1 className='title'>Mã đề {examData._id}</h1>
+            <h1 className='title'>Mã đề: {examData._id}</h1>
           </Col>
           <Col md={2} className='timer'>
             <span className='time'>
@@ -123,24 +123,24 @@ const TakeExamScreen = () => {
                   className={
                     examData.percentage >= 0 && examData.percentage <= 50
                       ? "text-danger"
-                      : examData.percentage >= 51 && examData.percentage <= 79
+                      : examData.percentage >= 51 && examData.percentage <= 74
                         ? "text-warning"
                         : "text-success"
                   }
                   style={{
                     padding: "5px",
-                    backgroundColor: "white",
+                    backgroundColor: "#f9f5f7",
                     fontWeight: "bold",
                     fontSize: "18px",
                   }}
                 >
                   {examData.percentage}%{" "}
                 </span>
-                so với cấu trúc đề thi THPTQG thật
+                so với cấu trúc đề thi THPTQG chính thức.
               </i>
             </p>
           </Col>
-          {examData.percentage >= 0 && examData.percentage <= 79 && (
+          {examData.percentage >= 0 && examData.percentage <= 74 && (
             <Col md={4}>
               <Button as={Link} className='submit-btn' to='/progress'>
                 Tạo đề thi khác
