@@ -7,8 +7,6 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   padding: 10px;
   background-color: #f8f9fa;
@@ -19,11 +17,6 @@
 .title {
   font-size: 24px;
   font-weight: bold;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
 }
 
 .user-icon {
@@ -43,7 +36,6 @@
   display: flex;
   width: 100%;
   max-width: 2000px;
-  margin: 20px;
 }
 
 .question-section {
@@ -70,7 +62,6 @@
 
 .sidebar {
   flex: 1;
-  margin-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,8 +69,6 @@
 
 .timer {
   font-size: 18px;
-  margin-bottom: 20px;
-  margin-left: -100px;
 }
 
 .time {
@@ -88,11 +77,16 @@
   color: #ff6b6b;
 }
 
+.time p {
+  margin-bottom: 0;
+}
+
 .submit-btn {
   padding: 8px 20px;
   margin-bottom: 20px;
   background-color: #ff6b6b;
   border: none;
+  border-radius: 10px;
   color: white;
   cursor: pointer;
 }
@@ -126,19 +120,32 @@
 }
 .sidebar {
   flex: 1;
-  margin-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 70vh;
+  max-height: 80dvh;
   overflow-y: auto;
 }
 
 .question-list-scroll {
-  max-height: 60vh;
+  max-height: 80dvh;
   overflow-y: auto;
 }
 .questionType {
   font-weight: bold;
   font-style: italic;
+}
+
+.confirm-dialog .modal-footer {
+  justify-content: center;
+}
+
+.confirm-dialog .btn.btn-primary {
+  background-color: #ff6b6b;
+  border-color: #ff6b6b;
+  white-space: nowrap;
+}
+
+.exam-container.detailed-answers {
+  gap: 20px;
 }

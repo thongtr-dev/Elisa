@@ -1,18 +1,39 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { saveTakingExamTimeLeft } from "../slices/authSlice";
 
-const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState(60 * 60); // 60 minutes in seconds
+const CountdownTimer = ({ submitHandler }) => {
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const initialTime = userInfo?.timeLeft ?? 60 * 60;
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+
+  useEffect(() => {
+    if (userInfo && userInfo.timeLeft) {
+      setTimeLeft(userInfo.timeLeft);
+    }
+  }, [userInfo]);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+      setTimeLeft((prevTimeLeft) => {
+        const newTimeLeft = Math.max(prevTimeLeft - 1, 0);
+        dispatch(saveTakingExamTimeLeft({ timeLeft: newTimeLeft }));
+        return newTimeLeft;
+      });
     }, 1000);
 
-    // Clean up timer when component unmounts
     return () => clearInterval(timer);
-  }, []);
+  }, [dispatch]);
 
-  // Format time into hours, minutes, and seconds
+  useEffect(() => {
+    if (timeLeft === 0) {
+      dispatch(saveTakingExamTimeLeft({ timeLeft: 0 }));
+      submitHandler();
+    }
+  }, [timeLeft, dispatch, submitHandler]);
+
   const formatTime = (time) => {
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;

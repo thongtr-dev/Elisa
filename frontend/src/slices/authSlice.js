@@ -14,6 +14,21 @@ const authSlice = createSlice({
       state.userInfo = action.payload;
       localStorage.setItem("userInfo", JSON.stringify(action.payload));
     },
+    saveTakingExamAnswers: (state, action) => {
+      state.userInfo = {
+        ...state.userInfo,
+        userAnswers: action.payload.userAnswers,
+      };
+      localStorage.setItem("userInfo", JSON.stringify(state.userInfo));
+    },
+    saveTakingExamTimeLeft: (state, action) => {
+      state.userInfo = {
+        ...state.userInfo,
+
+        timeLeft: action.payload.timeLeft,
+      };
+      localStorage.setItem("userInfo", JSON.stringify(state.userInfo));
+    },
     logout: (state, action) => {
       state.userInfo = null;
       localStorage.clear();
@@ -21,6 +36,11 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const {
+  setCredentials,
+  saveTakingExamAnswers,
+  saveTakingExamTimeLeft,
+  logout,
+} = authSlice.actions;
 
 export default authSlice.reducer;

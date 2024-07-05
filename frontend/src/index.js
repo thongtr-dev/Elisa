@@ -19,6 +19,7 @@ import ResultScreen from "./screens/ResultScreen";
 import DetailedAnswersScreen from "./screens/DetailedAnswersScreen";
 import TakenExamsScreen from "./screens/TakenExamsScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import ProgressScreen from "./screens/ProgressScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
 
       <Route path='' element={<PrivateRoute />}>
         <Route path='/main' element={<HomeScreen />} />
+        <Route path='/progress' element={<ProgressScreen />} />
         <Route path='/take-exam/:id' element={<TakeExamScreen />} />
         <Route path='/result/:id' element={<ResultScreen />} />
         <Route path='/result/:id/details' element={<DetailedAnswersScreen />} />
