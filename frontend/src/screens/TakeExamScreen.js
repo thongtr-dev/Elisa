@@ -24,14 +24,14 @@ const TakeExamScreen = () => {
 
   const renderQuestions = (questions) =>
     questions.map((question) => (
-      <div key={question._id}>
+      <div key={question?._id}>
         <span>
           <strong>Question {++questionNum}</strong>:{" "}
-          <span dangerouslySetInnerHTML={{ __html: question.question }}></span>
+          <span dangerouslySetInnerHTML={{ __html: question?.question }}></span>
         </span>
 
         <ul className='options'>
-          {question.options.map((option, i) => (
+          {question?.options?.map((option, i) => (
             <li dangerouslySetInnerHTML={{ __html: option }} key={i}></li>
           ))}
         </ul>
@@ -79,19 +79,19 @@ const TakeExamScreen = () => {
       </div>
       <div className='exam-content'>
         <div className='question-section sidebar'>
-          {Object.keys(examData.parts).map((partKey) => (
+          {Object.keys(examData?.parts).map((partKey) => (
             <div key={partKey}>
               <p className='questionType'>
-                {examData.parts[partKey].questionType}
+                {examData?.parts[partKey]?.questionType}
               </p>
-              {examData.parts[partKey].passage && (
-                <p>{examData.parts[partKey].passage}</p>
+              {examData?.parts?.[partKey]?.passage && (
+                <p>{examData?.parts?.[partKey]?.passage}</p>
               )}
-              {examData.parts[partKey].passages &&
-                examData.parts[partKey].passages.map((passage) => (
+              {examData?.parts?.[partKey]?.passages &&
+                examData?.parts?.[partKey]?.passages.map((passage) => (
                   <p>{passage}</p>
                 ))}
-              {renderQuestions(examData.parts[partKey].questions)}
+              {renderQuestions(examData?.parts?.[partKey]?.questions)}
             </div>
           ))}
         </div>

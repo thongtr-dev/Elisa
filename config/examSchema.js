@@ -663,7 +663,13 @@ const examSchemaConfig = {
         },
       },
     },
+    percentage: {
+      type: FunctionDeclarationSchemaType.NUMBER,
+      description:
+        "The percentage similarity between the original exam and the generated exam after all parts have been provided.",
+    },
   },
+
   required: ["parts"],
 };
 
