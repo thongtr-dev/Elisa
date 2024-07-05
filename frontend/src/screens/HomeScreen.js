@@ -1,25 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import Loader from "../components/Loader";
-import { toast } from "react-toastify";
-import { useCreateExamMutation } from "../slices/examsApiSlice";
 import "./styles/homeScreen.css";
 
 const HomeScreen = () => {
-  const navigate = useNavigate();
-  const [createExam, { isLoading }] = useCreateExamMutation();
-
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const { examId } = await createExam().unwrap();
-      navigate(`/take-exam/${examId}`);
-      toast.success("Exam created successfully");
-    } catch (error) {
-      toast.error(error?.data?.message);
-    }
-  };
-
   return (
     <Container className='home-screen-container'>
       <Row className='justify-content-center text-center'>
@@ -33,19 +16,9 @@ const HomeScreen = () => {
         </Col>
       </Row>
       <Row className='justify-content-center text-center'>
-        <Col>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <Button
-              className='btn-start'
-              onClick={submitHandler}
-              style={{ backgroundColor: "#ff6b6b", borderColor: "#ff6b6b" }}
-            >
-              Làm bài ngay
-            </Button>
-          )}
-        </Col>
+        <Button as={Link} className='btn-start' to='/progress'>
+          Tạo đề ngẫu nhiên
+        </Button>
       </Row>
       <Row className='justify-content-center'>
         <Col className='image-col'>

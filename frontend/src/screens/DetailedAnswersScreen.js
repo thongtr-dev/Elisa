@@ -70,62 +70,62 @@ const DetailedAnswersScreen = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant='danger'>
-      {error?.status} {JSON.stringify(error?.data)}
-    </Message>
+    <Message variant='danger'>Đề thi không tồn tại</Message>
   ) : (
-    <div className='exam-container'>
-      <div className='header'>
-        <h1 className='title'>Đáp án chi tiết đề: {data.exam._id}</h1>
-      </div>
-      <div className='exam-content'>
-        <div className='question-section sidebar'>
-          {Object.keys(data.exam.parts).map((partKey) => (
-            <div key={partKey}>
-              <p className='questionType'>
-                {data.exam.parts[partKey].questionType}
-              </p>
-              {data.exam.parts[partKey].passage && (
-                <p>{data.exam.parts[partKey].passage}</p>
-              )}
-              {renderQuestions(data.exam.parts[partKey].questions)}
-            </div>
-          ))}
+    <>
+      <div className='exam-container detailed-answers'>
+        <div className='header'>
+          <h1 className='title'>Đáp án chi tiết đề: {data.exam._id}</h1>
         </div>
-        <div className='sidebar'>
-          {[...Array(50).keys()].map((num) => (
-            <Row key={num} className='question-item'>
-              <Col>{num + 1}</Col>
-
-              <Col>
-                {data.userAnswers?.[num] !== undefined &&
-                data.userAnswers?.[num] !== null ? (
-                  <Button
-                    variant={
-                      data.userAnswers?.[num] ===
-                      correctAnswers[num]?.correctOption
-                        ? "success"
-                        : "danger"
-                    }
-                    onClick={() =>
-                      showModalHandler(correctAnswers[num]?.answerDetail)
-                    }
-                  >
-                    {options[data.userAnswers?.[num]]}
-                  </Button>
-                ) : (
-                  <Button
-                    variant='secondary'
-                    onClick={() =>
-                      showModalHandler(correctAnswers[num]?.answerDetail)
-                    }
-                  >
-                    {options[correctAnswers[num]?.correctOption]}
-                  </Button>
+        <div className='exam-content'>
+          <div className='question-section sidebar'>
+            {Object.keys(data.exam.parts).map((partKey) => (
+              <div key={partKey}>
+                <p className='questionType'>
+                  {data.exam.parts[partKey].questionType}
+                </p>
+                {data.exam.parts[partKey].passage && (
+                  <p>{data.exam.parts[partKey].passage}</p>
                 )}
-              </Col>
-            </Row>
-          ))}
+                {renderQuestions(data.exam.parts[partKey].questions)}
+              </div>
+            ))}
+          </div>
+          <div className='sidebar'>
+            {[...Array(50).keys()].map((num) => (
+              <Row key={num} className='question-item'>
+                <Col>{num + 1}</Col>
+
+                <Col>
+                  {data.userAnswers?.[num] !== undefined &&
+                  data.userAnswers?.[num] !== null ? (
+                    <Button
+                      variant={
+                        data.userAnswers?.[num] ===
+                        correctAnswers[num]?.correctOption
+                          ? "success"
+                          : "danger"
+                      }
+                      onClick={() =>
+                        showModalHandler(correctAnswers[num]?.answerDetail)
+                      }
+                    >
+                      {options[data.userAnswers?.[num]]}
+                    </Button>
+                  ) : (
+                    <Button
+                      variant='secondary'
+                      onClick={() =>
+                        showModalHandler(correctAnswers[num]?.answerDetail)
+                      }
+                    >
+                      {options[correctAnswers[num]?.correctOption]}
+                    </Button>
+                  )}
+                </Col>
+              </Row>
+            ))}
+          </div>
         </div>
       </div>
       <Modal size='lg' centered show={showModal} onHide={closeModalHandler}>
@@ -139,7 +139,7 @@ const DetailedAnswersScreen = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 };
 

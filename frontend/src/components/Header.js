@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Navbar,
@@ -20,6 +20,7 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [logoutApiCall] = useLogoutMutation();
 
@@ -34,46 +35,49 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <Navbar variant='light' expand='md' collapseOnSelect>
-        <Container>
-          <NavbarBrand
-            as={Link}
-            to='/'
-            style={{
-              color: "#ff6b6b",
-              fontSize: "48px",
-              fontFamily: "Poppins, sans-serif",
-              fontWeight: "700",
-            }}
-          >
-            ElisAI
-          </NavbarBrand>
-          <NavbarToggle aria-controls='basic-navbar-nav' />
-          <NavbarCollapse id='basic-navbar-nav'>
-            <Nav className='ms-auto'>
-              {userInfo ? (
-                <NavDropdown title={userInfo?.name} id='username'>
-                  <NavDropdown.Item as={Link} to='/profile'>
-                    Trang cá nhân
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to='/result/mine'>
-                    Lịch sử làm đề thi
-                  </NavDropdown.Item>
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Đăng xuất
-                  </NavDropdown.Item>
-                </NavDropdown>
-              ) : (
-                <NavLink as={Link} to='/'>
-                  <FaUser /> Đăng nhập
-                </NavLink>
-              )}
-            </Nav>
-          </NavbarCollapse>
-        </Container>
-      </Navbar>
-    </header>
+    !location.pathname.includes("take-exam") &&
+    !location.pathname.includes("progress") && (
+      <header>
+        <Navbar variant='light' expand='md' collapseOnSelect>
+          <Container>
+            <NavbarBrand
+              as={Link}
+              to='/'
+              style={{
+                color: "#ff6b6b",
+                fontSize: "48px",
+                fontFamily: "Poppins, sans-serif",
+                fontWeight: "700",
+              }}
+            >
+              ElisAI
+            </NavbarBrand>
+            <NavbarToggle aria-controls='basic-navbar-nav' />
+            <NavbarCollapse id='basic-navbar-nav'>
+              <Nav className='ms-auto'>
+                {userInfo ? (
+                  <NavDropdown title={userInfo?.name} id='username'>
+                    <NavDropdown.Item as={Link} to='/profile'>
+                      Trang cá nhân
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to='/result/mine'>
+                      Lịch sử làm đề thi
+                    </NavDropdown.Item>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Đăng xuất
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                ) : (
+                  <NavLink as={Link} to='/'>
+                    <FaUser /> Đăng nhập
+                  </NavLink>
+                )}
+              </Nav>
+            </NavbarCollapse>
+          </Container>
+        </Navbar>
+      </header>
+    )
   );
 };
 
