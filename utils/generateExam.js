@@ -53,7 +53,11 @@ const generationConfig = (schema, maxOutputTokens = 2048) => ({
 });
 
 const fetchPart = async (partSchema, partNumber) => {
-  const parts = [{ text: `Give me part ${partNumber} of the exam.` }];
+  const parts = [
+    {
+      text: `Give me part ${partNumber} of the exam with exact ${parseInt(examSchemaConfig.properties.parts.properties[`part${partNumber}`].properties.numberOfQuestions.description)} questions.`,
+    },
+  ];
 
   try {
     const result = await model.generateContent({

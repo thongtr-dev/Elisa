@@ -9,23 +9,32 @@ const createExam = asyncHandler(async (req, res) => {
     throw new Error(`Bad Gateway: Third-party API error: ${result.error}`);
   }
 
+  if (!result.parts) {
+    res.status(500);
+    throw new Error("Server error: Missing parts in the result");
+  }
+
   const examData = {
     parts: {},
     percentage: null,
   };
 
-  try {
-    result.parts.forEach((part, index) => {
+  result.parts.forEach((part, index) => {
+    const partContent = JSON.parse(part.candidates[0].content.parts[0].text);
+    if (partContent) {
       const partNumber = `part${index + 1}`;
-      const partContent = JSON.parse(part.candidates[0].content.parts[0].text);
       examData.parts[partNumber] = partContent;
-    });
-    examData.percentage = JSON.parse(
-      result.percentage.candidates[0].content.parts[0].text
-    );
-  } catch (error) {
+    } else {
+      res.status(500);
+      throw new Error(`Server error: Missing exam part ${index + 1}`);
+    }
+  });
+  const percentage = result.percentage.candidates[0].content.parts[0].text;
+  if (percentage) {
+    examData.percentage = JSON.parse(percentage);
+  } else {
     res.status(500);
-    throw new Error(`Error parsing exam content: ${error.message}`);
+    throw new Error("Server error: Missing exam percentage match");
   }
 
   const exam = await Exam.create(examData);
@@ -34,8 +43,8 @@ const createExam = asyncHandler(async (req, res) => {
       examId: exam._id,
     });
   } else {
-    res.status(400);
-    throw new Error("Invalid exam data. Please try again");
+    res.status(500);
+    throw new Error("Server error: Exam was not created. Please try again");
   }
 });
 
