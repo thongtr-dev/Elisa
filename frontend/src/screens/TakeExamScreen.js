@@ -75,7 +75,9 @@ const TakeExamScreen = () => {
   };
 
   const submitHandler = async (e) => {
-    e.preventDefault();
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
     try {
       const { takenId } = await submitExam({
         examId,

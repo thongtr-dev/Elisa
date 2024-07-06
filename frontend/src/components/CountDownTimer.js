@@ -49,7 +49,7 @@ const CountdownTimer = ({ submitHandler }) => {
   return (
     <div>
       <p>{formatTime(timeLeft)}</p>
-      {timeLeft <= 0 && <h2>Hết giờ làm bài!</h2>}
+      {timeLeft <= 0 && <h4>Hết giờ làm bài!</h4>}
     </div>
   );
 };
