@@ -14,10 +14,6 @@ const takeExamSchema = new Schema(
       ref: "Exam",
       required: true,
     },
-    submitDate: {
-      type: Date,
-      required: true,
-    },
     userAnswers: {
       type: Object,
       required: true,

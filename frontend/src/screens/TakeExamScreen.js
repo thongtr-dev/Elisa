@@ -81,7 +81,6 @@ const TakeExamScreen = () => {
     try {
       const { takenId } = await submitExam({
         examId,
-        submitDate: new Date(),
         userAnswers,
       }).unwrap();
       toast.success("Đã nộp bài thành công!");
