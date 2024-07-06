@@ -10,6 +10,14 @@ export const examsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Exam"],
     }),
+    createExamFromMistakes: builder.mutation({
+      query: () => ({
+        url: `${EXAMS_URL}/mistakes`,
+        method: "POST",
+      }),
+      invalidatesTags: ["Exam"],
+    }),
+
     getExamDetails: builder.query({
       query: (examId) => ({
         url: `${EXAMS_URL}/${examId}`,
@@ -19,4 +27,8 @@ export const examsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useCreateExamMutation, useGetExamDetailsQuery } = examsApiSlice;
+export const {
+  useCreateExamMutation,
+  useGetExamDetailsQuery,
+  useCreateExamFromMistakesMutation,
+} = examsApiSlice;

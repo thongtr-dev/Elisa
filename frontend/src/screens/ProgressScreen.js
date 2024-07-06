@@ -1,22 +1,34 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useCreateExamMutation } from "../slices/examsApiSlice";
+import {
+  useCreateExamMutation,
+  useCreateExamFromMistakesMutation,
+} from "../slices/examsApiSlice";
 import { Row, Col, Button, ProgressBar } from "react-bootstrap";
 
 const ProgressScreen = () => {
   const navigate = useNavigate();
   const [createExam, { isLoading }] = useCreateExamMutation();
+  const [createExamFromMistakes, { isLoading: loadingCreateFromMistakes }] =
+    useCreateExamFromMistakesMutation();
   const [errMsg, setErrMsg] = useState("");
   const [isError, setIsError] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    generateExam();
-  }, []);
+  const { examIsRandom } = useSelector((state) => state.exam);
 
   useEffect(() => {
-    if (isLoading) {
+    if (examIsRandom) {
+      generateExam(createExam);
+    } else {
+      generateExam(createExamFromMistakes);
+    }
+  }, [examIsRandom]);
+
+  useEffect(() => {
+    if (isLoading || loadingCreateFromMistakes) {
       const interval = setInterval(() => {
         setProgress((oldProgress) => {
           const newProgress = oldProgress + 2;
@@ -33,11 +45,11 @@ const ProgressScreen = () => {
 
       return () => clearInterval(interval);
     }
-  }, [isLoading]);
+  }, [isLoading, loadingCreateFromMistakes]);
 
-  const generateExam = async () => {
+  const generateExam = async (func) => {
     try {
-      const { examId } = await createExam().unwrap();
+      const { examId } = await func().unwrap();
       navigate(`/take-exam/${examId}`);
       toast.success("Tạo đề thi thành công!");
     } catch (error) {
@@ -60,7 +72,7 @@ const ProgressScreen = () => {
           <h2 className='subtitle'>BẮT ĐẦU TẠO ĐỀ THI! </h2>
         </Col>
 
-        {isLoading && (
+        {(isLoading || loadingCreateFromMistakes) && (
           <>
             <ProgressBar
               animated
