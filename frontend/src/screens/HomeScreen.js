@@ -24,7 +24,7 @@ const HomeScreen = () => {
     <Container className='home-screen-container'>
       <Row className='justify-content-center text-center'>
         <Col>
-          <h2 className='subtitle'>Đề thi Tiếng anh THPT Quốc Gia</h2>
+          <h2 className='subtitle'>Luyện đề thi Tiếng anh THPT Quốc Gia</h2>
         </Col>
       </Row>
       <Row className='justify-content-center text-center'>
@@ -41,9 +41,10 @@ const HomeScreen = () => {
         <Col>
           <Button
             className='btn-start from-mistakes'
+            style={{whiteSpace: 'nowrap'}}
             onClick={createFromMistakes}
           >
-            Tạo đề từ đề thi làm gần nhất
+            Tạo đề cá nhân hóa
           </Button>
         </Col>
       </Row>
