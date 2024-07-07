@@ -1,7 +1,6 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import TakeExam from "../models/takeExamModel.js";
 import Exam from "../models/examModel.js";
-import User from "../models/userModel.js";
 
 /**
  * @desc Submit exam
