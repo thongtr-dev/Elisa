@@ -10,8 +10,11 @@ const DetailedAnswersScreen = () => {
   const { data, isLoading, error } = useGetExamDetailedAnswersQuery(takenId);
 
   const [correctAnswers, setCorrectAnswers] = useState({});
-  const [showModal, setShowModal] = useState(false);
-  const [modalContent, setModalContent] = useState("");
+  const [showModalSuggest, setShowModalSuggest] = useState(false);
+  const [showModalAnswer, setShowModalAnswer] = useState(false);
+  const [modalSuggestContent, setmodalSuggestContent] = useState("");
+  const [modalAnswerContent, setModalAnswerContent] = useState("");
+  const [num, setNum] = useState(null);
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -23,6 +26,7 @@ const DetailedAnswersScreen = () => {
         temp.push(
           ...parts[`part${i}`].questions.map((q) => ({
             correctOption: q.correctOption,
+            suggestion: q.suggestion,
             answerDetail: q.answerDetail,
           }))
         );
@@ -30,8 +34,12 @@ const DetailedAnswersScreen = () => {
 
       let updatedCorrectAnswers = { ...correctAnswers };
 
-      temp.forEach(({ correctOption, answerDetail }, index) => {
-        updatedCorrectAnswers[index] = { correctOption, answerDetail };
+      temp.forEach(({ correctOption, suggestion, answerDetail }, index) => {
+        updatedCorrectAnswers[index] = {
+          correctOption,
+          suggestion,
+          answerDetail,
+        };
       });
 
       setCorrectAnswers(updatedCorrectAnswers);
@@ -57,14 +65,26 @@ const DetailedAnswersScreen = () => {
   const options = ["A", "B", "C", "D"];
   let questionNum = 0;
 
-  const showModalHandler = (content) => {
-    setShowModal(true);
-    setModalContent(content);
+  const showModalSuggestHandler = (content, num) => {
+    setShowModalSuggest(true);
+    setmodalSuggestContent(content);
+    setNum(num);
   };
 
-  const closeModalHandler = () => {
-    setShowModal(false);
-    setModalContent("");
+  const showModalAnswerHandler = (content) => {
+    setShowModalSuggest(false);
+    setShowModalAnswer(true);
+    setModalAnswerContent(content);
+  };
+
+  const closeModalSuggestsHandler = () => {
+    setShowModalSuggest(false);
+    setmodalSuggestContent("");
+  };
+
+  const closeModalAnswersHandler = () => {
+    setShowModalAnswer(false);
+    setModalAnswerContent("");
   };
 
   return isLoading ? (
@@ -111,8 +131,10 @@ const DetailedAnswersScreen = () => {
                           : "danger"
                       }
                       onClick={() =>
-                        showModalHandler(`Đáp án đúng là ${options[correctAnswers[num]?.correctOption]}.
-                          ${correctAnswers[num]?.answerDetail}`)
+                        showModalSuggestHandler(
+                          `${correctAnswers[num]?.suggestion}`,
+                          num
+                        )
                       }
                     >
                       {options[data.userAnswers?.[num]]}
@@ -121,8 +143,10 @@ const DetailedAnswersScreen = () => {
                     <Button
                       variant='secondary'
                       onClick={() =>
-                        showModalHandler(`Đáp án đúng là ${options[correctAnswers[num]?.correctOption]}.
-                          ${correctAnswers[num]?.answerDetail}`)
+                        showModalSuggestHandler(
+                          `${correctAnswers[num]?.suggestion}`,
+                          num
+                        )
                       }
                     >
                       {options[correctAnswers[num]?.correctOption]}
@@ -134,13 +158,58 @@ const DetailedAnswersScreen = () => {
           </div>
         </div>
       </div>
-      <Modal size='lg' centered show={showModal} onHide={closeModalHandler}>
+      <Modal
+        size='lg'
+        centered
+        show={showModalSuggest}
+        onHide={closeModalSuggestsHandler}
+      >
         <Modal.Header>
-          <Modal.Title>Giải thích chi tiết</Modal.Title>
+          <Modal.Title>
+            Gợi ý câu{" "}
+            {(function () {
+              let newNum = num;
+              return ++newNum;
+            })()}
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>{modalContent}</Modal.Body>
+        <Modal.Body>{modalSuggestContent}</Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={closeModalHandler}>
+          <Button
+            variant='secondary'
+            style={{ backgroundColor: "#5d63c5" }}
+            onClick={() =>
+              showModalAnswerHandler(`Đáp án đúng là ${options[correctAnswers[num]?.correctOption]}.
+                                ${correctAnswers[num]?.answerDetail}`)
+            }
+          >
+            Xem đáp án chi tiết
+          </Button>
+
+          <Button variant='secondary' onClick={closeModalSuggestsHandler}>
+            Đóng
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        size='lg'
+        centered
+        show={showModalAnswer}
+        onHide={closeModalAnswersHandler}
+      >
+        <Modal.Header>
+          <Modal.Title>
+            Giải thích chi tiết câu{" "}
+            {(function () {
+              let newNum = num;
+              return ++newNum;
+            })()}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{modalAnswerContent}</Modal.Body>
+        <Modal.Footer>
+          <Button variant='secondary' onClick={closeModalAnswersHandler}>
             Đóng
           </Button>
         </Modal.Footer>
