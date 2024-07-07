@@ -43,6 +43,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -53,6 +57,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -96,6 +101,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -106,6 +115,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -148,6 +158,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -158,6 +172,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -201,6 +216,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -211,6 +230,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -254,6 +274,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -264,6 +288,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -306,6 +331,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -316,6 +345,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -362,6 +392,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -372,6 +406,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -423,6 +458,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -433,6 +472,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -482,6 +522,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -492,6 +536,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -539,6 +584,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -549,6 +598,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -592,6 +642,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -602,6 +656,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },
@@ -644,6 +699,10 @@ const examSchemaConfig = {
                     type: FunctionDeclarationSchemaType.INTEGER,
                     description: "Correct option, from 0 to 3 only.",
                   },
+                  suggestion: {
+                    type: FunctionDeclarationSchemaType.STRING,
+                    description: "Suggestion for the question, in Vietnamese.",
+                  },
                   answerDetail: {
                     type: FunctionDeclarationSchemaType.STRING,
                     description:
@@ -654,6 +713,7 @@ const examSchemaConfig = {
                   "question",
                   "options",
                   "correctOption",
+                  "suggestion",
                   "answerDetail",
                 ],
               },

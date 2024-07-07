@@ -6,6 +6,7 @@ const questionSchema = new Schema(
     question: { type: String },
     options: { type: [String] },
     correctOption: { type: Number },
+    suggestion: { type: String },
     answerDetail: { type: String },
   },
   { _id: false }
