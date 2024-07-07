@@ -1,8 +1,25 @@
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Button, Container, Row, Col } from "react-bootstrap";
+import { setExamIsRandom } from "../slices/examSlice";
 import "./styles/homeScreen.css";
 
 const HomeScreen = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const createRandom = (e) => {
+    e.preventDefault();
+    dispatch(setExamIsRandom(true));
+    navigate("/progress");
+  };
+
+  const createFromMistakes = (e) => {
+    e.preventDefault();
+    dispatch(setExamIsRandom(false));
+    navigate("/progress");
+  };
+
   return (
     <Container className='home-screen-container'>
       <Row className='justify-content-center text-center'>
@@ -16,9 +33,19 @@ const HomeScreen = () => {
         </Col>
       </Row>
       <Row className='justify-content-center text-center'>
-        <Button as={Link} className='btn-start' to='/progress'>
-          Tạo đề ngẫu nhiên
-        </Button>
+        <Col>
+          <Button className='btn-start' onClick={createRandom}>
+            Tạo đề ngẫu nhiên
+          </Button>
+        </Col>
+        <Col>
+          <Button
+            className='btn-start from-mistakes'
+            onClick={createFromMistakes}
+          >
+            Tạo đề từ đề thi làm gần nhất
+          </Button>
+        </Col>
       </Row>
       <Row className='justify-content-center'>
         <Col className='image-col'>

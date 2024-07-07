@@ -40,6 +40,16 @@
   font-weight: bold; /* In đậm chữ */
 }
 
+.btn-start.from-mistakes {
+  background-color: #5d63c5;
+  border-color: #5d63c5;
+}
+
+.btn-start.from-mistakes:hover {
+  background-color: #5d63c5;
+  border-color: #5d63c5;
+}
+
 .btn-start:hover {
   background-color: #ff3380;
   border-color: #ff3380;

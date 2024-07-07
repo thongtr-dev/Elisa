@@ -8,14 +8,7 @@ import Exam from "../models/examModel.js";
  * @access Private
  */
 const submitExam = asyncHandler(async (req, res) => {
-  const { examId, submitDate, userAnswers } = req.body;
-
-  if (!examId || !submitDate || !userAnswers) {
-    res.status(400);
-    throw new Error(
-      "Missing required fields: examId, submitDate, or userAnswers"
-    );
-  }
+  const { examId, userAnswers } = req.body;
 
   const exam = await Exam.findById(examId);
   if (!exam) {
@@ -23,17 +16,11 @@ const submitExam = asyncHandler(async (req, res) => {
     throw new Error("Exam not found");
   }
 
-  const { parts } = exam;
-  if (!parts) {
-    res.status(400);
-    throw new Error("Exam has no parts defined");
-  }
-
   const correctAnswers = {};
   const temp = [];
 
   for (let i = 1; i <= 12; i++) {
-    const part = parts[`part${i}`];
+    const part = exam.parts[`part${i}`];
     if (part && Array.isArray(part.questions)) {
       temp.push(...part.questions.map((q) => q.correctOption));
     }
@@ -64,7 +51,6 @@ const submitExam = asyncHandler(async (req, res) => {
   const taken = await TakeExam.create({
     userId: req.user._id,
     examId,
-    submitDate,
     userAnswers,
     score,
     rightAnswersCount,
@@ -111,7 +97,9 @@ const getExamScore = asyncHandler(async (req, res) => {
  */
 
 const getMyTakenExams = asyncHandler(async (req, res) => {
-  const takenExams = await TakeExam.find({ userId: req.user._id });
+  const takenExams = await TakeExam.find({ userId: req.user._id }).sort({
+    createdAt: -1,
+  });
 
   if (takenExams) {
     res.json(takenExams);

@@ -53,7 +53,7 @@ const TakenExamsScreen = () => {
                 {record.examId}
               </span>
               <span className='column1'>
-                {formatDateTime(record.submitDate)}
+                {formatDateTime(record.createdAt)}
               </span>
               <span className='column1'>{record.score.toFixed(1)}</span>
               <span className='column1'>{record.rightAnswersCount}</span>
