@@ -1,6 +1,6 @@
-# TCFTeam_GenAIHackathon2024
+# Elisa
 
-Sử dụng trí tuệ nhân tạo (AI) để tự động ra đề thi Tiếng anh THPT Quốc Gia và cá nhân hóa quá trình học tập môn Tiếng anh
+Generative AI based app to automatically generate English exam questions for Vietnam National High School Graduation Exam and personalize the English exam practicing process.
 
 ### Folder structure
 
