@@ -41,7 +41,7 @@ const HomeScreen = () => {
         <Col>
           <Button
             className='btn-start from-mistakes'
-            style={{whiteSpace: 'nowrap'}}
+            style={{ whiteSpace: "nowrap" }}
             onClick={createFromMistakes}
           >
             Tạo đề cá nhân hóa

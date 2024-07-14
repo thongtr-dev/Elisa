@@ -9,14 +9,12 @@
     "server": "nodemon index.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server \" \"npm run client\"",
-    "data:import": "node seeder.js",
-    "data:destroy": "node seeder.js -d",
-    "format": "prettier --write frontend/src/ controllers/ data/ middleware/ models/ routes/ utils/ index.js seeder.js",
+    "format": "prettier --write frontend/src/ controllers/ middleware/ models/ routes/ utils/ index.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tienq22/TCFTeam_GenAIHackathon2024"
+    "url": "git+https://github.com/thongtr-dev/Elisa"
   },
   "author": {
     "name": "Thong Truong",
@@ -42,9 +40,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tienq22/TCFTeam_GenAIHackathon2024/issues"
+    "url": "https://github.com/thongtr-dev/Elisa/issues"
   },
-  "homepage": "https://github.com/tienq22/TCFTeam_GenAIHackathon2024#readme",
+  "homepage": "https://github.com/thongtr-dev/Elisa#readme",
   "dependencies": {
     "@google/generative-ai": "^0.14.0",
     "bcryptjs": "^2.4.3",
