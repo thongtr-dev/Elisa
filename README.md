@@ -1,11 +1,11 @@
-# Elisa
+# Elisa Exam AI
 
 Generative AI based app to automatically generate English exam questions for Vietnam National High School Graduation Exam and personalize the English exam practicing process.
 
 ### Folder structure
 
 ```
-TCFTEAM_GENAIHACKATHON2024/
+Elisa/
 ├── config/
 ├── controllers/
 ├── data/
