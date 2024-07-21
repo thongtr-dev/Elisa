@@ -11,8 +11,13 @@ const ProgressScreen = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    generateExam();
+  }, []);
+
+  useEffect(() => {
+    let interval;
     if (isLoading) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         setProgress((oldProgress) => {
           const newProgress = oldProgress + 2;
           if (newProgress >= 80 || error) {
@@ -25,9 +30,9 @@ const ProgressScreen = () => {
           return newProgress;
         });
       }, 2000);
-
-      return () => clearInterval(interval);
     }
+
+    return () => clearInterval(interval);
   }, [isLoading, error]);
 
   const generateExam = async () => {
@@ -39,6 +44,7 @@ const ProgressScreen = () => {
       toast.error(
         "Đề thi này gặp một số trục trặc. Bạn hãy thử tạo đề thi mới."
       );
+      console.error(error?.data?.message);
       setIsError(true);
     }
   };

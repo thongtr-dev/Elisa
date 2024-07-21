@@ -17,7 +17,6 @@ import RegisterScreen from "./screens/RegisterScreen";
 import TakeExamScreen from "./screens/TakeExamScreen";
 import ResultScreen from "./screens/ResultScreen";
 import DetailedAnswersScreen from "./screens/DetailedAnswersScreen";
-import TakenExamsScreen from "./screens/TakenExamsScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import ProgressScreen from "./screens/ProgressScreen";
 
@@ -33,7 +32,6 @@ const router = createBrowserRouter(
         <Route path='/take-exam/:id' element={<TakeExamScreen />} />
         <Route path='/result/:id' element={<ResultScreen />} />
         <Route path='/result/:id/details' element={<DetailedAnswersScreen />} />
-        <Route path='/result/mine' element={<TakenExamsScreen />} />
         <Route path='/profile' element={<ProfileScreen />} />
       </Route>
     </Route>

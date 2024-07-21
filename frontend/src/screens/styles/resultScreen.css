@@ -18,7 +18,7 @@ body {
   align-items: center; /* Căn giữa các phần tử theo chiều ngang */
   background-color: #fff;
   border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #dee2e6;
   padding: 5rem;
   max-width: 1800px; /* Đặt giới hạn chiều rộng */
   margin-bottom: 8rem;

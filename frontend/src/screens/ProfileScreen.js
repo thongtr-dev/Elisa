@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useUpdateProfileMutation } from "../slices/usersApiSlice";
+import { useGetMyTakenExamsQuery } from "../slices/takeExamApiSlice";
+import { setCredentials } from "../slices/authSlice";
+import { formatDateTime } from "../utils/formatDateTime";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
-import { useUpdateProfileMutation } from "../slices/usersApiSlice";
-import { setCredentials } from "../slices/authSlice";
+import Message from "../components/Message";
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");
@@ -17,6 +21,7 @@ const ProfileScreen = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   const [updateProfile, { isLoading }] = useUpdateProfileMutation();
+  const { data, isLoading: loadingExam, error } = useGetMyTakenExamsQuery();
 
   useEffect(() => {
     if (userInfo) {
@@ -46,23 +51,18 @@ const ProfileScreen = () => {
   };
 
   return (
-    <Row
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Row>
       <Col
+        md={4}
+        xs={12}
         style={{
-          maxWidth: "500px",
-          padding: "50px",
+          padding: "40px",
           backgroundColor: "#fff",
           borderBottom: "1px solid #dee2e6",
           borderRadius: "10px",
         }}
       >
-        <h2 style={{ fontWeight: 700 }}>Sửa thông tin cá nhân</h2>
+        <h1 style={{ fontWeight: 700, fontSize: "2rem" }}>Sửa thông tin</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='name' className='my-3'>
             <Form.Label>Tên</Form.Label>
@@ -118,6 +118,66 @@ const ProfileScreen = () => {
           )}
         </Form>
       </Col>
+
+      {loadingExam ? (
+        <Loader />
+      ) : error ? (
+        <Message variant='danger'>
+          {error?.status} {JSON.stringify(error?.data)}
+        </Message>
+      ) : (
+        <Col md={8} xs={12}>
+          <h2 style={{ fontWeight: 700 }}>Lịch sử làm đề</h2>
+          <Table striped hover responsive className='table-sm p-2 mt-2'>
+            <thead>
+              <tr>
+                <th>Mã đề</th>
+                <th>Ngày</th>
+                <th>Điểm</th>
+                <th>Đúng</th>
+                <th>Sai</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((record) => (
+                <tr key={record.examId} className='list-item'>
+                  <td>{"...".concat(record.examId.slice(-4))}</td>
+                  <td>{formatDateTime(record.createdAt)}</td>
+                  <td>{record.score.toFixed(1)}</td>
+                  <td>{record.rightAnswersCount}</td>
+                  <td>{record.wrongAnswersCount}</td>
+                  <td>
+                    <Button
+                      as={Link}
+                      to={`/take-exam/${record.examId}`}
+                      style={{
+                        backgroundColor: "#ff6b6b",
+                        borderColor: "#ff6b6b",
+                      }}
+                    >
+                      Làm lại
+                    </Button>
+                  </td>
+                  <td>
+                    <Button
+                      as={Link}
+                      to={`/result/${record._id}/details`}
+                      style={{
+                        backgroundColor: "#535dd0",
+                        borderColor: "535dd0",
+                      }}
+                    >
+                      Xem lại
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Col>
+      )}
     </Row>
   );
 };
