@@ -115,40 +115,6 @@ const TakeExamScreen = () => {
             </Button>
           </Col>
         </Row>
-        <Row className='mt-3 flex-start align-items-center w-100'>
-          <Col md={5}>
-            <p>
-              <i>
-                Đề thi này giống đến{" "}
-                <span
-                  className={
-                    examData.percentage >= 0 && examData.percentage <= 50
-                      ? "text-danger"
-                      : examData.percentage >= 51 && examData.percentage <= 74
-                        ? "text-warning"
-                        : "text-success"
-                  }
-                  style={{
-                    padding: "5px",
-                    backgroundColor: "#f9f5f7",
-                    fontWeight: "bold",
-                    fontSize: "18px",
-                  }}
-                >
-                  {examData.percentage}%{" "}
-                </span>
-                so với cấu trúc đề thi THPTQG chính thức.
-              </i>
-            </p>
-          </Col>
-          {examData.percentage >= 0 && examData.percentage <= 74 && (
-            <Col md={4}>
-              <Button as={Link} className='submit-btn' to='/progress'>
-                Tạo đề thi khác
-              </Button>
-            </Col>
-          )}
-        </Row>
         <div className='exam-content'>
           <div className='question-section sidebar'>
             {Object.keys(examData?.parts).map((partKey) => (

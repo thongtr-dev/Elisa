@@ -1,42 +1,25 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import {
-  useCreateExamMutation,
-  useCreateExamFromMistakesMutation,
-} from "../slices/examsApiSlice";
+import { useCreateExamMutation } from "../slices/examsApiSlice";
 import { Row, Col, Button, ProgressBar } from "react-bootstrap";
 
 const ProgressScreen = () => {
   const navigate = useNavigate();
-  const [createExam, { isLoading }] = useCreateExamMutation();
-  const [createExamFromMistakes, { isLoading: loadingCreateFromMistakes }] =
-    useCreateExamFromMistakesMutation();
-  const [errMsg, setErrMsg] = useState("");
+  const [createExam, { isLoading, error }] = useCreateExamMutation();
   const [isError, setIsError] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const { examIsRandom } = useSelector((state) => state.exam);
-
   useEffect(() => {
-    if (examIsRandom) {
-      generateExam(createExam);
-    } else {
-      generateExam(createExamFromMistakes);
-    }
-  }, [examIsRandom]);
-
-  useEffect(() => {
-    if (isLoading || loadingCreateFromMistakes) {
+    if (isLoading) {
       const interval = setInterval(() => {
         setProgress((oldProgress) => {
           const newProgress = oldProgress + 2;
-          if (newProgress >= 80) {
+          if (newProgress >= 80 || error) {
             clearInterval(interval);
             setIsError(true);
-            setErrMsg(
-              "Có vẻ như đề thi gặp một chút trục trặc. Bạn có muốn tạo lại đề mới không?"
+            toast.error(
+              "Đề thi này gặp một số trục trặc. Bạn hãy thử tạo đề thi mới."
             );
           }
           return newProgress;
@@ -45,15 +28,17 @@ const ProgressScreen = () => {
 
       return () => clearInterval(interval);
     }
-  }, [isLoading, loadingCreateFromMistakes]);
+  }, [isLoading, error]);
 
-  const generateExam = async (func) => {
+  const generateExam = async () => {
     try {
-      const { examId } = await func().unwrap();
+      const { examId } = await createExam().unwrap();
       navigate(`/take-exam/${examId}`);
       toast.success("Tạo đề thi thành công!");
     } catch (error) {
-      setErrMsg("Đề thi này chưa hoàn chỉnh. Bạn hãy tạo đề thi mới nhé.");
+      toast.error(
+        "Đề thi này gặp một số trục trặc. Bạn hãy thử tạo đề thi mới."
+      );
       setIsError(true);
     }
   };
@@ -61,7 +46,6 @@ const ProgressScreen = () => {
   const clickHandler = (e) => {
     e.preventDefault();
     setIsError(false);
-    setErrMsg("");
     generateExam();
   };
 
@@ -72,7 +56,7 @@ const ProgressScreen = () => {
           <h2 className='subtitle'>BẮT ĐẦU TẠO ĐỀ THI! </h2>
         </Col>
 
-        {(isLoading || loadingCreateFromMistakes) && (
+        {isLoading && (
           <>
             <ProgressBar
               animated
@@ -80,21 +64,16 @@ const ProgressScreen = () => {
               label={`${progress}% Complete`}
               className='custom-progress-bar'
             />
-            <p className='mt-3'>Đang hiển thị...</p>
+            <p className='mt-3'>Đang tạo đề...</p>
           </>
         )}
 
         {isError && (
-          <>
-            <p className='text-danger text-center' style={{ fontSize: "18px" }}>
-              {errMsg}
-            </p>
-            <Col className='text-center'>
-              <Button className='btn-start' onClick={clickHandler}>
-                Tạo lại đề thi mới
-              </Button>
-            </Col>
-          </>
+          <Col className='text-center'>
+            <Button className='btn-start' onClick={clickHandler}>
+              Tạo đề thi khác
+            </Button>
+          </Col>
         )}
       </Row>
       <Row className='mt-3'>
