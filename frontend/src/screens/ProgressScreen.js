@@ -52,6 +52,7 @@ const ProgressScreen = () => {
   const clickHandler = (e) => {
     e.preventDefault();
     setIsError(false);
+    setProgress(0);
     generateExam();
   };
 
@@ -59,7 +60,7 @@ const ProgressScreen = () => {
     <div className='progress-screen-container'>
       <Row className='mt-5'>
         <Col className='text-center'>
-          <h2 className='subtitle'>BẮT ĐẦU TẠO ĐỀ THI! </h2>
+          <h2 className='subtitle'>BẮT ĐẦU PHÁT ĐỀ!</h2>
         </Col>
 
         {isLoading && (
