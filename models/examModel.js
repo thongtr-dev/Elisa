@@ -60,6 +60,37 @@ const partSchema = new Schema(
   { _id: false }
 );
 
+const userAnswerSchema = new Schema(
+  {
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    answers: {
+      type: Map,
+      of: Schema.Types.Mixed,
+      required: true,
+    },
+    score: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    rightAnswersCount: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    wrongAnswersCount: {
+      type: Number,
+      required: true,
+      default: 50,
+    },
+  },
+  { _id: false }
+);
+
 const examSchema = new Schema(
   {
     parts: {
@@ -76,6 +107,7 @@ const examSchema = new Schema(
       part11: { type: partSchema, required: true },
       part12: { type: partSchema, required: true },
     },
+    userAnswers: [userAnswerSchema],
   },
   { timestamps: true }
 );
